@@ -2,7 +2,7 @@
 
 
 # Filename: /araujoarthur/geant4-learning-resources/compile.sh
-# Path: /araujoarthur/geant4-learning-resources
+# Path: github.com/araujoarthur/geant4-learning-resources
 # Created Date: Friday, July 15th 2022, 9:35:58 pm
 # Author: Arthur Galdino
 
