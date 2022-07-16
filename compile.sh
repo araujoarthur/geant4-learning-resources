@@ -1,4 +1,13 @@
 #!/bin/bash
+
+/*
+ * Filename: /araujoarthur/geant4-learning-resources/compile.sh
+ * Path: /araujoarthur/geant4-learning-resources
+ * Created Date: Friday, July 15th 2022, 9:35:58 pm
+ * Author: Arthur Galdino
+ */
+
+
 path="";
 # Asks for the installation path until it's a valid one (rely on the existence of /bin/geant4.sh to validade the instalation path)
 while [ ! -d "$path" ] || [ ! -e "${path}/bin/geant4.sh" ];
