@@ -20,6 +20,7 @@ This is a repository with stuff I made while learning Geant4 Application Develop
 ### Help Options
  - [Installing Geant4 on Linux (Extended Tutorial)](#)
  - [Troubleshooting Geant4 Installation Process](#)
+ - [Documentation for Geant4 Learning Resource Tools](#)
  - [Documentation for Geant4 Learning Resource Files](#)
 
 ### Contact
