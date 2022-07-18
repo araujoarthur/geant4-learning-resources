@@ -18,10 +18,10 @@ This is a repository with stuff I made while learning Geant4 Application Develop
  - C Standard ([Older](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf)) ([Newer](https://www.iso.org/standard/74528.html))
 
 ### Help Options
- - [Installing Geant4 on Linux (Extended Tutorial)](#)
- - [Troubleshooting Geant4 Installation Process](#)
- - [Documentation for Geant4 Learning Resource Tools](#)
- - [Documentation for Geant4 Learning Resource Files](#)
+ - [Installing Geant4 on Linux (Extended Tutorial)](https://araujoarthur.github.io/geant4-learning-resources/guideinstall)
+ - [Troubleshooting Geant4 Installation Process](https://araujoarthur.github.io/geant4-learning-resources/troubleshooting)
+ - [Documentation for Geant4 Learning Resource Tools](https://araujoarthur.github.io/geant4-learning-resources/helptools)
+ - [Documentation for Geant4 Learning Resource Files](https://araujoarthur.github.io/geant4-learning-resources/helpfiles)
 
 ### Contact
 [![Protonmail](https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white&style=flat)](mailto:arthur.galdino@proton.me)<br>
