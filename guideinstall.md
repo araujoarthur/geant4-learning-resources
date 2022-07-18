@@ -9,7 +9,7 @@ For troubleshooting, please check [this page](https://araujoarthur.github.io/gea
 
 ---
 ### Step 1 - Dowloading and Extracting the Source Code.
-<details><summary>Details</summary>
+<details><summary> {% octicon arrow-right height:16 %} Details</summary>
 <p>
 The first step is to get Geant4's source code from their [official website](https://geant4.web.cern.ch/support/download).
 
