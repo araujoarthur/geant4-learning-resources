@@ -6,10 +6,9 @@
 The goal of this guide is to make it clear how to finish a standard installation of Geant4 Simulation Toolkit on Linux based on Geant4 User Docs. 
 
 For troubleshooting, please check [this page](https://araujoarthur.github.io/geant4-learning-resources/troubleshooting)
-
 ---
 ### Step 1 - Dowloading and Extracting the Source Code.
-<details><summary> {% octicon arrow-right height:16 %} Details</summary>
+<details><summary> ![ArrowDown](assets/arrow-down.svg) Details</summary>
 <p>
 The first step is to get Geant4's source code from their [official website](https://geant4.web.cern.ch/support/download).
 
@@ -42,7 +41,7 @@ You're ready for Step 2.
 
 ### Step 2 - Downloading and Installing Dependencies.
 
-<details><summary>Details</summary>
+<details><summary>**Details**</summary>
 <p>
 
 #### Dependency List
@@ -73,7 +72,7 @@ sudo apt-get install build-essential
 </p>
 </details>
 
-<details><summary>Command for non-Debian-based Distributions (such as Ubuntu, Linux Mint, elementaryOS, etc.)</summary>
+<details><summary>Command for non-Debian-based Distributions (Fedora, CentOS, etc.)</summary>
 <p>
 
 *I am not sure it will work, needs test. If you run into problem even using those, please [open an Issue](https://github.com/araujoarthur/geant4-learning-resources/issues)*
