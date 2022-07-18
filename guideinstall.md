@@ -127,7 +127,7 @@ Now you should have all Geant4's dependencies and its dependencies' dependencies
 cd ~/Documents/Geant4/geant4-v11.0.2-build
 ```
 
-We must now prepare to build our Geant4 Source Code into Shared Objects. It can be done using CMake[^10][^11].
+We must now prepare to build our Geant4 Source Code into Shared Objects. It can be done using CMake[^10] <sup>,</sup> [^11].
 
 ```bash
 cmake -DCMAKE_INSTALL_PREFIX=~/Documents/Geant4/geant4-v11.0.2-install -DGEANT4_BUILD_MULTITHREADED=ON -DGEANT4_USE_QT=ON -DGEANT4_INSTALL_DATA=ON ~/Documents/Geant4/geant4-v11.0.2
