@@ -23,7 +23,7 @@ This is a repository with stuff I made while learning Geant4 Application Develop
  - [Documentation for Geant4 Learning Resource Files](#)
 
 ### Contact
-![Protonmail](https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white)
+![Protonmail](https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white&style=flat)
 `arthur.galdino@proton.me`
 
 ### Credits
