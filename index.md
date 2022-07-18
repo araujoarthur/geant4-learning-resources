@@ -1,37 +1,30 @@
-## Welcome to GitHub Pages
+# Geant4 Learning Resources
 
-You can use the [editor on GitHub](https://github.com/araujoarthur/geant4-learning-resources/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white&style=flat)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54&style=flat)
+![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white&style=flat)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black&style=flat)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white&style=flat)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### General Description
+This is a repository with stuff I made while learning Geant4 Application Development and the C++ Programming Language. Further information not detailed as comments inside the source files can be found in:
+ - [Introduction to Geant4](https://geant4-userdoc.web.cern.ch/UsersGuides/IntroductionToGeant4/html/index.html)
+ - [Geant4 User's Guide: For Application Developers](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/html/index.html)
+ - [Geant4 User's Guide: For Toolkit Developers](https://geant4-userdoc.web.cern.ch/UsersGuides/ForToolkitDeveloper/html/index.html)
+ - [Geant4 Physics Reference Manual](https://geant4-userdoc.web.cern.ch/UsersGuides/PhysicsReferenceManual/html/index.html)
+ - [Geant4 Physics List Guide](https://geant4-userdoc.web.cern.ch/UsersGuides/PhysicsListGuide/html/index.html)
+ - [C++ Reference](https://en.cppreference.com/w/)
+ - [C Standard Library Reference](https://en.cppreference.com/w/c/header)
+ - C Standard ([Older](https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf)) ([Newer](https://www.iso.org/standard/74528.html))
 
-### Markdown
+### Help Options
+ - [Installing Geant4 on Linux (Extended Tutorial)](#)
+ - [Troubleshooting Geant4 Installation Process](#)
+ - [Documentation for Geant4 Learning Resource Files](#)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Contact
+![Protonmail](https://img.shields.io/badge/ProtonMail-8B89CC?style=for-the-badge&logo=protonmail&logoColor=white)
+`arthur.galdino@proton.me`
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/araujoarthur/geant4-learning-resources/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### Credits
+Foo:Barbadgesbadges
