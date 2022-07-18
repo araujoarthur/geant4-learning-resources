@@ -195,16 +195,19 @@ Once finished, you can run `make -j N` and `make install` again and work with th
 
 <br>
 
+
 ### Postinstall
 
 <details><summary><img src="assets/stop.svg"/> Setting Geant4 Environment</summary>
 <p>
+
 Every time you open a new Terminal Window to compile and run your code you will need to setup the Geant4 Environment Variables[^13]. It can be done running the following command:
 
 ```bash
 source ~/Documents/Geant4/geant4-v11.0.2-install/bin/geant4.sh
 ```
 
+You can check for success with the command `env`, then looking for Geant4's Datasets as Environment Variables names.
 </p>
 </details>
 
