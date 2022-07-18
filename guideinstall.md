@@ -13,7 +13,7 @@ For troubleshooting, please check [this page](https://araujoarthur.github.io/gea
 <p>
 The first step is to get Geant4's source code from their [official website](https://geant4.web.cern.ch/support/download).
 
-After downloaded, open your terminal and type[^1]:
+After you have it on your computer, open your terminal and type[^1]:
 [^1]: Please note that it won't work on non-english systems. To make it work, change `Documents` to whatever it means in you system's language.
 ```bash
     cd && mkdir ~/Documents/Geant4 -p && cd ~/Documents/Geant4
@@ -24,13 +24,13 @@ If you run `pwd` on your terminal, you should see something like[^2]:
 ```bash
 /home/YOUR-USERNAME/Documents/Geant4
 ```
-If you got to this directory, you can run:
+If you reached this directory, you can run[^3]:
 
 ```bash
-cp ~/Downloads/geant4-v11.0.2 .
+cp ~/Downloads/geant4-v11.0.2.tar.gz . && tar -xf geant-v11.0.2.tar.gz
 ```
-[^3]
-[^3]:If you are trying to install another version, change `v11.0.2` to your version.
+Here you must have in your `home/YOUR-USERNAME/Geant4` folder a file called `geant4-v11.0.2.tar.gz` and a folder called `geant4-v11.0.2`. Create a new folder called `geant4-v11.0.2-install`
+[^3]:If you are trying to install another version instead 11.0.2, change `v11.0.2` to your version. In the next commands.
 
 </p>
 </details>
