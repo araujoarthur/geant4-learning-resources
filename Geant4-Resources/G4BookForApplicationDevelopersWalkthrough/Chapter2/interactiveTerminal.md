@@ -1,3 +1,11 @@
+# GEANT4: Interactive Terminal
+Reference file in: [interactiveTerminal.cc](https://github.com/araujoarthur/geant4-learning-resources/blob/main/Geant4-Resources/G4BookForApplicationDevelopersWalkthrough/Chapter2/interactiveTerminal.cc)
+
+**DISCLAIMER**: Most of this text is raw text from [Geant4 Docs: Book For Application Developers](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/fo/BookForApplicationDevelopers.pdf). Some parts are extended explanations, in-place explanations, and code examples.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G4 provides a category called intercoms managed by `G4UImanager`. THis category let us invoke set methods of class objects of which we do not know the pointer. `G4UImanager` also handles the G4cout and G4cerr (works the same as `std::cerr` and `std::cout` but the streams are handled by `G4UImanager`).
+
+```cpp
 #include "G4RunManager.hh"
 #include "G4UIManager.hh"
 
@@ -47,17 +55,7 @@ int main()
     delete runManager;
     return 0;
 }
+```
 
-/*
-    G4 provides a category called intercoms managed by G4UImanager. THis category let us
-    invoke set methods of class objects of which we do not know the pointer.
-
-    G4UImanager also handles the G4cout and G4cerr (works the same as std::cerr and std::cout but the streams
-    are handled by G4UImanager).
-*/
-
-/*
-    Final questions:
-    What is a category?
-*/
-
+### Final Questions
+- What's a category?
