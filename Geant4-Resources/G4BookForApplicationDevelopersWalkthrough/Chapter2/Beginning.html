@@ -1,0 +1,105 @@
+<h1 id="chapter-2-geant4-basics">Chapter 2: GEANT4 Basics</h1>
+<p>Reference file in: chapter.cc</p>
+<p><strong>DISCLAIMER</strong>: Most of this text is raw text from <a href="https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/fo/BookForApplicationDevelopers.pdf">Geant4 Docs: Book For Application Developers</a>. Some parts are extended explanations, in-place explanations, and code examples.</p>
+<h4 id="toolkit-headers">Toolkit Headers</h4>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&quot;G4RunManagerFactory.hh&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&quot;G4UImanager.hh&quot;</span></span></code></pre></div>
+<h4 id="user-defined-headers">User Defined Headers</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&quot;ExG4DetectorConstruction01.hh&quot;</span></span></code></pre></div>
+<p>        <strong>Example name</strong>. could be anything else. What really matters is its contents Inside the above file there should be a class derived from <code>G4VUserDetectorConstruction</code> and this class is where the user describes the entire detector setup, including its geometry, materials used to construct, definition of sensitive regions and the readout schemes of the sensitive regions (?).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&quot;ExG4PhysicsList00.hh&quot;</span></span></code></pre></div>
+<p>        Inside the above file there’s a class derived from <code>G4VUserPhysicsList</code> which requires user to define the particles used in the simulation and all physics processess to be simulated. Users can override default implementation for range cuts of the particles (Check for range cuts after).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&quot;ExG4ActionInitialization01.hh&quot;</span></span></code></pre></div>
+<p>        Inside the above file there’s a class derived from <code>G4VUserActionInitialization</code> which requires the user to define: - User action classes (next sec) that are invoked during the simulation which includes one mandatory user action to define the primary particles.</p>
+<h3 id="the-main-function">The Main Function</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="dt">int</span> main()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>{</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>    <span class="co">// Construct the default run manager</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a>    <span class="kw">auto</span> runManager = G4RunManagerFactory::CreateRunManager(); <span class="co">// Line 12</span></span></code></pre></div>
+<blockquote>
+<p><strong>Note</strong> For auto keyword check <a href="https://en.cppreference.com/w/cpp/language/auto">C++ Reference</a>.</p>
+</blockquote>
+<p>        <code>G4RunManager</code> is <strong><em>the first thing</em></strong> a <code>main()</code> must construct and is the <strong>only</strong> manager class in G4’s Kernel which should be explicitly constructed in application the(user’s) main. <code>G4RunManager</code> controls the flow of the application and manage the event loops within a run. <em>Line 12</em> instantiates <code>G4RunManager</code> Object of <a href="https://en.cppreference.com/w/cpp/language/abstract_class#Explanation">concrete type</a> <code>G4MTRunManager</code> if G4 Library was build for MT support or <code>G4RunManager</code> otherwise. Other major classes are created with <code>G4RunManager</code> and deleted when <code>G4RunManager</code> is deleted. The run manager is also responsible for managing initialization procedures, including methods in the user initialization classes. Through these the run manage must be given all the information necessary to build and run a simulation, including:</p>
+<ol type="1">
+<li>How Detector should be constructed (<code>ExG4DetectorConstruction01</code>)</li>
+<li>All the particles and all the physics processes to be simulated (<code>ExG4PhysicsList00</code>)</li>
+<li>How the primary particle(s) in an event should be produced (<code>ExG4ActionInitialization01</code>)</li>
+<li>any additional class needed for the simulation to work.</li>
+</ol>
+<h4 id="user-initializations">User Initializations</h4>
+<p>        All <em>User Initializations</em> are objects built from classes that inherits from any of the Toolkit’s base classes. The initialization scheme below returns a pointer to the created object to the <code>runManager</code>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a>    runManager-&gt;SetUserInitialization(<span class="kw">new</span> ExG4DetectorConstruction01); <span class="co">// Creates an object to specify Detector Geometry</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>    runManager-&gt;SetUserInitialization(<span class="kw">new</span> ExG4PhysicsList00); <span class="co">// Create an object to specify physics processes</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>    runManager-&gt;SetUserInitialization(<span class="kw">new</span> ExG4ActionInitialization01); <span class="co">// Create an object to specify primary particle</span></span></code></pre></div>
+<p>        These three classes are mandatory and must derive from the <a href="https://en.cppreference.com/w/cpp/language/abstract_class#Explanation">abstract</a> base classes:</p>
+<ul>
+<li>G4VUserDetectorConstruction</li>
+<li>G4VUserPhysicsList</li>
+<li>G4VUserActionInitialization</li>
+</ul>
+<blockquote>
+<p><strong>Warning</strong> THERE IS NO DEFAULT BEHAVIOR FOR THESE CLASSES</p>
+</blockquote>
+<p>        <code>G4RunManager</code> is responsible of checking for the existence of these three mandatory classes every time <code>Initialize()</code> and <code>beamOn()</code> are invoked. The class derived from <code>G4VUserActionInitialization</code> should include at least one mandatory user action class <code>G4VUserPrimaryGeneratorAction</code>, which requires that the initial event state be defined. An example of ActionInitialization child is given in <a href="#"><code>ExG4ActionInitialization.cc</code></a>.</p>
+<h4 id="runmanager-initialization"><code>runManager</code> initialization</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a>    <span class="co">// Initialize G4 Kernel</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>    runManager-&gt;Initialize(); <span class="co">// Performs detector construction, creates physics processes and calculate crosssections, setting up the run.</span></span></code></pre></div>
+<h4 id="the-g4uimanager-pointer">The <code>G4UImanager</code> pointer</h4>
+<p>The <code>G4UImanager</code> is an example of manager class which is created with runManager.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a>    <span class="co">// Get the pointer to the UI manager</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>    G4UImanager* UI = G4UImanager::GetUIpointer(); <span class="co">// Take a pointer to the interface manager to allow the user to issue commands.</span></span></code></pre></div>
+<p>Sending commands to <strong>Intercomms</strong> to set verbosities (more on that later).</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a>    UI-&gt;ApplyCommand(<span class="st">&quot;/run/verbose 1&quot;</span>);</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>    UI-&gt;ApplyCommand(<span class="st">&quot;/event/verbose 1&quot;</span>);</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>    UI-&gt;AppliCommand(<span class="st">&quot;/tracking/verbose 1&quot;</span>);</span></code></pre></div>
+<h4 id="starting-the-run-with-beamon-method.">Starting the run with <code>beamOn()</code> method.</h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="co">// Start a run</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="dt">int</span> numberOfEvents = <span class="dv">3</span>;</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>runManager-&gt;beamOn(numberOfEvent); <span class="co">// This line begins a RUN of three sequentially processed events.</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a> <span class="co">// Job termination</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>    <span class="kw">delete</span> runManager;</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>}</span></code></pre></div>
+<h3 id="final-questions">Final Questions:</h3>
+<ul>
+<li>What is a run?</li>
+<li>What is an event?</li>
+<li>What is an user action?</li>
+<li>What is an event action?</li>
+</ul>
+<h3 id="full-code">Full Code</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&quot;G4RunManagerFactory.hh&quot;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&quot;G4UImanager.hh&quot;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&quot;ExG4DetectorConstruction01.hh&quot;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&quot;ExG4PhysicsList00.hh&quot;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a><span class="pp">#include </span><span class="im">&quot;ExG4ActionInitialization01.hh&quot;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a><span class="dt">int</span> main()</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a>{</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true"></a>    <span class="co">// Construct the default run manager</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true"></a>    <span class="kw">auto</span> runManager = G4RunManagerFactory::CreateRunManager(); </span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true"></a>    runManager-&gt;SetUserInitialization(<span class="kw">new</span> ExG4DetectorConstruction01); </span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true"></a>    runManager-&gt;SetUserInitialization(<span class="kw">new</span> ExG4PhysicsList00); </span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true"></a>    runManager-&gt;SetUserInitialization(<span class="kw">new</span> ExG4ActionInitialization01);</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true"></a>    <span class="co">// Initialize G4 Kernel</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true"></a>    runManager-&gt;Initialize();</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true"></a></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true"></a>    <span class="co">// Get the pointer to the UI manager and set verbosities</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true"></a>    G4UImanager* UI = G4UImanager::GetUIpointer(); </span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true"></a></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true"></a>    UI-&gt;ApplyCommand(<span class="st">&quot;/run/verbose 1&quot;</span>);</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true"></a>    UI-&gt;ApplyCommand(<span class="st">&quot;/event/verbose 1&quot;</span>);</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true"></a>    UI-&gt;AppliCommand(<span class="st">&quot;/tracking/verbose 1&quot;</span>);</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true"></a></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true"></a>    <span class="co">// Start a run</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true"></a>    <span class="dt">int</span> numberOfEvents = <span class="dv">3</span>;</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true"></a>    runManager-&gt;beamOn(numberOfEvent);</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true"></a></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true"></a>    <span class="co">// Job termination</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true"></a>    <span class="kw">delete</span> runManager;</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true"></a>}</span></code></pre></div>
