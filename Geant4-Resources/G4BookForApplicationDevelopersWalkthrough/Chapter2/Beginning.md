@@ -1,5 +1,5 @@
 # Chapter 2: GEANT4 Basics
-Reference file in: chapter.cc
+Reference file in: [chapter2.cc](https://github.com/araujoarthur/geant4-learning-resources/blob/main/Geant4-Resources/G4BookForApplicationDevelopersWalkthrough/Chapter2/chapter2.cc)
 
 **DISCLAIMER**: Most of this text is raw text from [Geant4 Docs: Book For Application Developers](https://geant4-userdoc.web.cern.ch/UsersGuides/ForApplicationDeveloper/fo/BookForApplicationDevelopers.pdf). Some parts are extended explanations, in-place explanations, and code examples.
 
@@ -66,7 +66,7 @@ int main()
 > **Warning**
 > THERE IS NO DEFAULT BEHAVIOR FOR THESE CLASSES
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`G4RunManager` is responsible of checking for the existence of these three mandatory classes every time `Initialize()` and `beamOn()` are invoked. The class derived from `G4VUserActionInitialization` should include at least one mandatory user action class `G4VUserPrimaryGeneratorAction`, which requires that the initial event state be defined. An example of ActionInitialization child is given in [`ExG4ActionInitialization.cc`](#).
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`G4RunManager` is responsible of checking for the existence of these three mandatory classes every time `Initialize()` and `beamOn()` are invoked. The class derived from `G4VUserActionInitialization` should include at least one mandatory user action class `G4VUserPrimaryGeneratorAction`, which requires that the initial event state be defined. An example of ActionInitialization child is given in [`ExG4ActionInitialization.cc`](https://github.com/araujoarthur/geant4-learning-resources/blob/main/Geant4-Resources/G4BookForApplicationDevelopersWalkthrough/Chapter2/ExG4ActionInitialization.cc).
 
 #### `runManager` initialization
 
